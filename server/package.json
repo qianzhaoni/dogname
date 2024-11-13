@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "start": "node index.js",
+    "seed": "node scripts/seedDatabase.js"
+  }
+} 

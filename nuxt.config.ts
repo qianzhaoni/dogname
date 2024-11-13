@@ -1,4 +1,8 @@
 export default defineNuxtConfig({
+  ssr: true,
+  nitro: {
+    preset: 'vercel'
+  },
   app: {
     head: {
       title: 'AI Pet Name Generator',
@@ -10,9 +14,6 @@ export default defineNuxtConfig({
           name: 'description', 
           content: 'Generate unique and meaningful pet names with AI assistance'
         }
-      ],
-      link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
     }
   },
@@ -25,15 +26,7 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
     vueI18n: {
       legacy: false,
-      locale: 'en',
-      messages: {
-        en: {
-          // 将使用现有的翻译
-        },
-        zh: {
-          // 将使用现有的翻译
-        }
-      }
+      locale: 'en'
     }
   },
   runtimeConfig: {

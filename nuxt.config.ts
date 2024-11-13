@@ -18,17 +18,23 @@ export default defineNuxtConfig({
     }
   },
   modules: [
-    '@nuxtjs/i18n',
-    '@pinia/nuxt',
+    ['@nuxtjs/i18n', {
+      langDir: 'locales',
+      defaultLocale: 'en',
+      locales: [
+        {
+          code: 'en',
+          file: 'en.json'
+        },
+        {
+          code: 'zh',
+          file: 'zh.json'
+        }
+      ],
+      vueI18n: './i18n.config.ts'
+    }],
+    '@pinia/nuxt'
   ],
-  i18n: {
-    locales: ['en', 'zh'],
-    defaultLocale: 'en',
-    vueI18n: {
-      legacy: false,
-      locale: 'en'
-    }
-  },
   runtimeConfig: {
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:3000/api'

@@ -1,43 +1,32 @@
 export default defineNuxtConfig({
-  ssr: true,
+  devtools: { enabled: true },
+  
   nitro: {
-    preset: 'vercel'
+    preset: 'vercel-edge'
   },
+
+  modules: [
+    '@nuxtjs/i18n'
+  ],
+
+  i18n: {
+    locales: ['en', 'zh'],
+    defaultLocale: 'en',
+    strategy: 'prefix_except_default',
+    vueI18n: './i18n.config.ts'
+  },
+
   app: {
     head: {
-      title: 'AI Pet Name Generator',
+      title: 'Pet Name Generator',
       meta: [
         { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { 
-          hid: 'description', 
-          name: 'description', 
-          content: 'Generate unique and meaningful pet names with AI assistance'
-        }
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' }
       ]
     }
   },
-  modules: [
-    ['@nuxtjs/i18n', {
-      langDir: 'locales',
-      defaultLocale: 'en',
-      locales: [
-        {
-          code: 'en',
-          file: 'en.json'
-        },
-        {
-          code: 'zh',
-          file: 'zh.json'
-        }
-      ],
-      vueI18n: './i18n.config.ts'
-    }],
-    '@pinia/nuxt'
-  ],
+
   runtimeConfig: {
-    public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:3000/api'
-    }
+    mongodbUri: process.env.MONGODB_URI
   }
 }) 

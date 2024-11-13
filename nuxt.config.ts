@@ -2,7 +2,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   
   nitro: {
-    preset: 'vercel-edge'
+    preset: 'vercel',
+    serveStatic: true
   },
 
   modules: [
@@ -23,10 +24,14 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }
       ]
-    }
+    },
+    baseURL: '/'
   },
 
   runtimeConfig: {
-    mongodbUri: process.env.MONGODB_URI
+    mongodbUri: process.env.MONGODB_URI,
+    public: {
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api'
+    }
   }
 }) 

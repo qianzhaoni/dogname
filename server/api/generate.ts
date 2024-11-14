@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
       })
     }
 
-    return names[0]
+    return { name: names[0] }
   } catch (error) {
     throw createError({
       statusCode: 500,
